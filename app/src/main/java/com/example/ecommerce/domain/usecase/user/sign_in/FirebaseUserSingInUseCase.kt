@@ -1,0 +1,12 @@
+package com.example.ecommerce.domain.usecase.user.sign_in
+
+import com.example.ecommerce.domain.entity.user.FirebaseSignInUserEntity
+import com.example.ecommerce.domain.entity.user.UserInformationEntity
+
+interface FirebaseUserSingInUseCase {
+    operator fun invoke(
+        user: FirebaseSignInUserEntity,
+        onSuccess: (UserInformationEntity) -> Unit,
+        onFailure: (String) -> Unit
+    )
+}
