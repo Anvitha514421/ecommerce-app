@@ -1,6 +1,8 @@
 package com.example.ecommerce.data.source.remote
 
 import android.net.Uri
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
@@ -30,6 +32,7 @@ class FirebaseDataSourceImpl @Inject constructor(
             }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun signInWithFirebase(
         user: FirebaseSignInUserEntity,
         onSuccess: (UserInformationEntity) -> Unit,
@@ -114,6 +117,7 @@ class FirebaseDataSourceImpl @Inject constructor(
                 onFailure(it.message ?: "An error occurred")
             }
     }
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun createJwtTokenForFirebaseUser(): String {
         val now = Instant.now()
         val expirationTime = now.plusSeconds(180)
